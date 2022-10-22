@@ -24,6 +24,11 @@
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis vel repellat illum perferendis deserunt rerum magnam.</p>
                     </div>
                 </div> */
+// <!-- <div class="col"><img src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="" class=""></div>
+// <div class="col"><img src="https://static1.evcdn.net/images/reduction/1513757_w-1920_h-1080_q-70_m-crop.jpg" alt="" class=""></div>
+// <div class="col"><img src="https://img.itinari.com/pages/images/original/0d3ed180-d22d-48e8-84df-19c4d888b41f-62-crop.jpg?ch=DPR&dpr=2.625&w=1600&s=7ebd4b5a9e045f41b4e0c7c75d298d6c" alt="" class=""></div>
+// <div class="col"><img src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="" class=""></div>
+// <div class="col"><img src="https://cdn.sanity.io/images/24oxpx4s/prod/ed09eff0362396772ad50ec3bfb728d332eb1c30-3200x2125.jpg?w=1600&h=1063&fit=crop" alt="" class=""></div> -->
 
 // MILESTONE 1
 // inizio a creare array oggetti
@@ -56,61 +61,89 @@ const images = [
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
     },
 ];
-// prendo container al quale appendo poi con una funzione il div per le foto grandi ....e poi div testo, con html
+
+// prendo container big imgs container
 const bigImagesContainer = document.getElementById('big-images-container');
-bigImagesDivGenerator(images);
-function bigImagesDivGenerator(images){ 
-    for(let objects of images){
+// funzione per div immagini big con html
+function bigImagesDivGenerator(objects){ 
     const bigImageDiv = document.createElement('div');
     bigImageDiv.className = 'position-relative js-dnone d-none';
-    bigImageDiv.innerHTML = `<img id="big-svezia" src="${objects.url}" alt="" class="big-images">
-    <div id="img-description" class="text-white">
+    bigImageDiv.innerHTML = `
+    <img id="big-svezia" src="${objects.url}" alt="" class="big-images">
+    <div class="text-white img-description">
         <span>${objects.title}</span>
         <p>${objects.description}</p>
-    </div>`
-    bigImagesContainer.append(bigImageDiv);
-    }
-    // right();
-    dnoneToggleLeft();
-    
+    </div>
+    `
+    return bigImageDiv;
 }
+// prendo container small images
+const smallImagesContainer = document.getElementById('small-images-container');
+// funzione per div immagini small con html
+function smallImagesDivGenerator(objects){
+    const smallImageDiv = document.createElement('div');
+    smallImageDiv.className ='col position-relative';
+    smallImageDiv.innerHTML = `
+    <img src="${objects.url}" alt="" class="small-images">
+    <div class="text-white small-img-description">
+        <span>${objects.title}</span>
+    </div>
+    `;
+    return smallImageDiv;
+}
+// funzione per appendere immagini big e small
+function imagesAppend(images){
+    for(let objects of images){
+        const bigImgDivGenerator = bigImagesDivGenerator(objects);
+        bigImagesContainer.append(bigImgDivGenerator);
+    }
+    for(let objects of images){
+        const smallImgDivGenerator = smallImagesDivGenerator(objects);
+        smallImagesContainer.append(smallImgDivGenerator);
+    }
+}
+// chiamo imagesAppend
+imagesAppend(images);
 
 // le devo far sparire e riapparire con toggle, devo farlo funzionare ai click delle frecce
-function dnoneToggleLeft(){
+function dnoneToggleRight(){
     let dnone = 0;
     const imagesToggle = document.querySelectorAll('.js-dnone');
     console.log(imagesToggle);
     imagesToggle[dnone].classList.toggle('d-none');
-    const frecciaBtn = document.getElementById('arrow-left');
-    frecciaBtn.addEventListener('click', function(){
+    const arrowRBtn = document.getElementById('arrow-right');
+    arrowRBtn.addEventListener('click', function(){
         imagesToggle[dnone].classList.toggle('d-none');
-        if(dnone == 4){
-            dnone = 0;
+        if(dnone == 0){
+            dnone = 4;
             imagesToggle[dnone].classList.toggle('d-none');
             console.log(dnone)
         }else{
-            dnone++;
+            dnone--;
             imagesToggle[dnone].classList.toggle('d-none');
             console.log(dnone)
         }
     })
 }
-// function right(){
+// function dnoneToggleLeft(){
 //     let dnone = 0;
 //     const imagesToggle = document.querySelectorAll('.js-dnone');
 //     console.log(imagesToggle);
 //     imagesToggle[dnone].classList.toggle('d-none');
-//     const frecciaBtn = document.getElementById('arrow-right');
-//     frecciaBtn.addEventListener('click', function(){
+//     const arrowLBtn = document.getElementById('arrow-left');
+//     arrowLBtn.addEventListener('click', function(){
 //         imagesToggle[dnone].classList.toggle('d-none');
-//         if(dnone == 0){
-//             dnone = 4;
+//         if(dnone == 4){
+//             dnone = 0;
 //             imagesToggle[dnone].classList.toggle('d-none');
 //             console.log(dnone)
 //         }else{
-//             dnone--;
+//             dnone++;
 //             imagesToggle[dnone].classList.toggle('d-none');
 //             console.log(dnone)
 //         }
 //     })
 // }
+
+dnoneToggleRight();
+// dnoneToggleLeft();
