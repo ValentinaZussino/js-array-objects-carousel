@@ -30,7 +30,7 @@
 // <div class="col"><img src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="" class=""></div>
 // <div class="col"><img src="https://cdn.sanity.io/images/24oxpx4s/prod/ed09eff0362396772ad50ec3bfb728d332eb1c30-3200x2125.jpg?w=1600&h=1063&fit=crop" alt="" class=""></div> -->
 
-// MILESTONE 1
+// MILESTONE 2 + BONUS 2
 // inizio a creare array oggetti
 const images = [
     {
@@ -121,12 +121,6 @@ function dnoneToggleRight(){
             }
         imagesToggle[dnone].classList.toggle('d-none');
     })
-}
-function dnoneToggleLeft(){
-    let dnone = 4;
-    const imagesToggle = document.querySelectorAll('.js-dnone');
-    console.log(imagesToggle);
-    imagesToggle[dnone].classList.toggle('d-none');
     const arrowLBtn = document.getElementById('arrow-left');
     arrowLBtn.addEventListener('click', function(){
         imagesToggle[dnone].classList.toggle('d-none');
@@ -139,15 +133,15 @@ function dnoneToggleLeft(){
         console.log(dnone)
     })
 }
+
 dnoneToggleRight();
-// dnoneToggleLeft();
 
 // funzione per intervallo carosello big
-// setInterval(carouselInterval, 3000)
+let iCounter = 0;
+setInterval(carouselInterval, 3000)
 function carouselInterval(){
     console.log('santo cielo');
     const imagesToggle = document.querySelectorAll('.js-dnone');
-    let iCounter = 0;
     imagesToggle[iCounter].classList.toggle('d-none');
     if (iCounter < imagesToggle.length - 1){
         iCounter++;
@@ -155,4 +149,5 @@ function carouselInterval(){
         iCounter = 0;
     }
     imagesToggle[iCounter].classList.toggle('d-none');
+    console.log(iCounter);
 }

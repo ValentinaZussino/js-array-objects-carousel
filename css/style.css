@@ -51,10 +51,10 @@ i{
 i.fa-arrow-left {
     position: absolute;
     left: 0;
-     top: 50%; /*poi comabiare con corretto transform */
+    top: 40%;
 }
 i.fa-arrow-right {
     position: absolute;
     right: 0;
-    top: 50%; /*poi comabiare con corretto transform */
+    top: 40%; 
 }
