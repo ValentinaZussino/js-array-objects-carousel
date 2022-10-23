@@ -141,8 +141,7 @@ let iCounter = 0;
 let i = 0;
 const imagesOpacity = document.querySelectorAll('.js-opacity');
 imagesOpacity[i].classList.toggle('small-img-opacity');
-let interval = setInterval(carouselInterval, 3000);
-// setInterval(carouselInterval, 3000);
+// let interval = setInterval(carouselInterval, 3000);
 function carouselInterval(){
     const imagesToggle = document.querySelectorAll('.js-dnone');
     imagesToggle[iCounter].classList.toggle('d-none');
@@ -162,7 +161,7 @@ function carouselInterval(){
 // btn stop per fermare scorrimento automatico
 const btnStop = document.getElementById('stop');
 btnStop.addEventListener('click', stopCarousel);
-// funzione di stop
+// funzione di stop nad play
 function stopCarousel(){
     if(btnStop.value == 'stop'){
         clearInterval(interval);
