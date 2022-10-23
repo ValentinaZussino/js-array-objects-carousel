@@ -106,7 +106,7 @@ function imagesAppend(images){
 imagesAppend(images);
 
 // le devo far sparire e riapparire con toggle, devo farlo funzionare ai click delle frecce
-function dnoneToggleRight(){
+function dnoneToggle(){
     let dnone = 0;
     const imagesToggle = document.querySelectorAll('.js-dnone');
     console.log(imagesToggle);
@@ -133,8 +133,8 @@ function dnoneToggleRight(){
         console.log(dnone)
     })
 }
-
-dnoneToggleRight();
+// chiamo dnoneToggle
+dnoneToggle();
 
 // funzione per intervallo carosello big
 let iCounter = 0;
@@ -153,6 +153,7 @@ function carouselInterval(){
     } else if (iCounter === imagesToggle.length - 1){
         iCounter = 0;
         i = 0;
+        imagesOpacity[i].classList.toggle('small-img-opacity');
     }
     imagesToggle[iCounter].classList.toggle('d-none');
 }
