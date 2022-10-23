@@ -30,7 +30,7 @@
 // <div class="col"><img src="https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg" alt="" class=""></div>
 // <div class="col"><img src="https://cdn.sanity.io/images/24oxpx4s/prod/ed09eff0362396772ad50ec3bfb728d332eb1c30-3200x2125.jpg?w=1600&h=1063&fit=crop" alt="" class=""></div> -->
 
-// MILESTONE 2 + BONUS 2
+// MILESTONE 0-1-2 + BONUS 1-2
 // inizio a creare array oggetti
 const images = [
     {
@@ -141,7 +141,8 @@ let iCounter = 0;
 let i = 0;
 const imagesOpacity = document.querySelectorAll('.js-opacity');
 imagesOpacity[i].classList.toggle('small-img-opacity');
-setInterval(carouselInterval, 3000);
+let interval = setInterval(carouselInterval, 3000);
+// setInterval(carouselInterval, 3000);
 function carouselInterval(){
     const imagesToggle = document.querySelectorAll('.js-dnone');
     imagesToggle[iCounter].classList.toggle('d-none');
@@ -156,4 +157,12 @@ function carouselInterval(){
         imagesOpacity[i].classList.toggle('small-img-opacity');
     }
     imagesToggle[iCounter].classList.toggle('d-none');
+}
+
+// btn stop per fermare scorrimento automatico
+const btnStop = document.getElementById('stop');
+btnStop.addEventListener('click', stopCarousel);
+// funzione di stop
+function stopCarousel(){
+    clearInterval(interval);
 }
