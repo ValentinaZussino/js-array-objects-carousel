@@ -82,7 +82,7 @@ const smallImagesContainer = document.getElementById('small-images-container');
 // funzione per div immagini small con html
 function smallImagesDivGenerator(objects){
     const smallImageDiv = document.createElement('div');
-    smallImageDiv.className ='col position-relative';
+    smallImageDiv.className ='col position-relative js-opacity small-img-opacity';
     smallImageDiv.innerHTML = `
     <img src="${objects.url}" alt="" class="small-images">
     <div class="text-white small-img-description">
@@ -138,16 +138,21 @@ dnoneToggleRight();
 
 // funzione per intervallo carosello big
 let iCounter = 0;
-setInterval(carouselInterval, 3000)
+let i = 0;
+const imagesOpacity = document.querySelectorAll('.js-opacity');
+imagesOpacity[i].classList.toggle('small-img-opacity');
+setInterval(carouselInterval, 3000);
 function carouselInterval(){
-    console.log('santo cielo');
     const imagesToggle = document.querySelectorAll('.js-dnone');
     imagesToggle[iCounter].classList.toggle('d-none');
+    imagesOpacity[i].classList.toggle('small-img-opacity');
     if (iCounter < imagesToggle.length - 1){
         iCounter++;
+        i++;
+        imagesOpacity[i].classList.toggle('small-img-opacity');
     } else if (iCounter === imagesToggle.length - 1){
         iCounter = 0;
+        i = 0;
     }
     imagesToggle[iCounter].classList.toggle('d-none');
-    console.log(iCounter);
 }
