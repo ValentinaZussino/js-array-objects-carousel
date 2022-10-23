@@ -164,5 +164,13 @@ const btnStop = document.getElementById('stop');
 btnStop.addEventListener('click', stopCarousel);
 // funzione di stop
 function stopCarousel(){
-    clearInterval(interval);
+    if(btnStop.value == 'stop'){
+        clearInterval(interval);
+        btnStop.innerHTML = 'Play';
+        btnStop.value = 'play';
+    } else{
+        interval = setInterval(carouselInterval, 3000);
+        btnStop.value = 'stop';
+        btnStop.innerHTML = 'Stop';
+    }
 }
