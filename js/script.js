@@ -62,7 +62,7 @@ const images = [
     },
 ];
 
-// prendo container big imgs container
+// prendo container big imgs
 const bigImagesContainer = document.getElementById('big-images-container');
 // funzione per div immagini big con html
 function bigImagesDivGenerator(objects){ 
@@ -114,36 +114,45 @@ function dnoneToggleRight(){
     const arrowRBtn = document.getElementById('arrow-right');
     arrowRBtn.addEventListener('click', function(){
         imagesToggle[dnone].classList.toggle('d-none');
-        if(dnone == 0){
-            dnone = 4;
-            imagesToggle[dnone].classList.toggle('d-none');
-            console.log(dnone)
-        }else{
-            dnone--;
-            imagesToggle[dnone].classList.toggle('d-none');
-            console.log(dnone)
-        }
+        if(dnone === images.length - 1){
+             dnone = 0;
+         } else{ 
+             dnone++;
+            }
+        imagesToggle[dnone].classList.toggle('d-none');
     })
 }
-// function dnoneToggleLeft(){
-//     let dnone = 0;
-//     const imagesToggle = document.querySelectorAll('.js-dnone');
-//     console.log(imagesToggle);
-//     imagesToggle[dnone].classList.toggle('d-none');
-//     const arrowLBtn = document.getElementById('arrow-left');
-//     arrowLBtn.addEventListener('click', function(){
-//         imagesToggle[dnone].classList.toggle('d-none');
-//         if(dnone == 4){
-//             dnone = 0;
-//             imagesToggle[dnone].classList.toggle('d-none');
-//             console.log(dnone)
-//         }else{
-//             dnone++;
-//             imagesToggle[dnone].classList.toggle('d-none');
-//             console.log(dnone)
-//         }
-//     })
-// }
-
+function dnoneToggleLeft(){
+    let dnone = 4;
+    const imagesToggle = document.querySelectorAll('.js-dnone');
+    console.log(imagesToggle);
+    imagesToggle[dnone].classList.toggle('d-none');
+    const arrowLBtn = document.getElementById('arrow-left');
+    arrowLBtn.addEventListener('click', function(){
+        imagesToggle[dnone].classList.toggle('d-none');
+        if(dnone === 0){
+            dnone = images.length - 1;
+        }else{
+            dnone--;
+        }
+        imagesToggle[dnone].classList.toggle('d-none');
+        console.log(dnone)
+    })
+}
 dnoneToggleRight();
 // dnoneToggleLeft();
+
+// funzione per intervallo carosello big
+// setInterval(carouselInterval, 3000)
+function carouselInterval(){
+    console.log('santo cielo');
+    const imagesToggle = document.querySelectorAll('.js-dnone');
+    let iCounter = 0;
+    imagesToggle[iCounter].classList.toggle('d-none');
+    if (iCounter < imagesToggle.length - 1){
+        iCounter++;
+    } else if (iCounter === imagesToggle.length - 1){
+        iCounter = 0;
+    }
+    imagesToggle[iCounter].classList.toggle('d-none');
+}
